@@ -1,0 +1,16 @@
+{
+    "name": "GameObjectLogic",
+    "rootNamespace": "",
+    "references": [
+        "GUID:fc6c09032f53df84d957a665677050bb"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
