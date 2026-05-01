@@ -3,9 +3,9 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
-using PlayerPrefs = RedefineYG.PlayerPrefs; // Make PlayerPrefs save game to the web platform cloud.
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
-public class MainMenu : MonoBehaviour // This class manages the main menu, options menu and language settings.
+public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Toggle _tutorialToggle;
     private bool _tutorial;
@@ -51,17 +51,11 @@ public class MainMenu : MonoBehaviour // This class manages the main menu, optio
         }
     }
 
-    /// <summary>
-    /// Launches next gaming scene.
-    /// </summary>
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    /// <summary>
-    /// Turns on / off tutarial menu after launching game proccess.
-    /// </summary>
     public void SkipTutorial()
     {
         if (_isContectedToServer)
@@ -84,9 +78,6 @@ public class MainMenu : MonoBehaviour // This class manages the main menu, optio
         }
     }
 
-    /// <summary>
-    /// Manages sounds audio volume.
-    /// </summary>
     public void SoundAudioVolume()
     {
         if (_isContectedToServer)
@@ -97,9 +88,6 @@ public class MainMenu : MonoBehaviour // This class manages the main menu, optio
         }
     }
 
-    /// <summary>
-    /// Manages music audio volume.
-    /// </summary>
     public void MusicAudioVolume()
     {
         if (_isContectedToServer)
@@ -110,33 +98,21 @@ public class MainMenu : MonoBehaviour // This class manages the main menu, optio
         }
     }
 
-    /// <summary>
-    /// Sets the russian language for game.
-    /// </summary>
     public void SetRussianLanguage()
     {
         YG2.SwitchLanguage("ru");
     }
 
-    /// <summary>
-    /// Sets the english language for game.
-    /// </summary>
     public void SetEnglishLanguage()
     {
         YG2.SwitchLanguage("en");
     }
 
-    /// <summary>
-    /// Checks if optionsmenu opened (it is needed to control SkipTutorial method and toggle).
-    /// </summary>
     public void OpenMenuFlag()
     {
         _wasOptionsMenuOpened = !_wasOptionsMenuOpened;
     }
 
-    /// <summary>
-    /// Loads parametes from options menu.
-    /// </summary>
     public void LoadOptions()
     {
         if (PlayerPrefs.HasKey("SoundsVolume"))

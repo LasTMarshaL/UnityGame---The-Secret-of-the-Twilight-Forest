@@ -1,8 +1,8 @@
 using UnityEngine;
 using YG;
-using PlayerPrefs = RedefineYG.PlayerPrefs; // Make PlayerPrefs save game to the web platform cloud.
+using PlayerPrefs = RedefineYG.PlayerPrefs;
 
-public class PauseBeforeGame : MonoBehaviour // This class manages the pause before game starts.
+public class PauseBeforeGame : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseBeforeGame;
 
@@ -17,10 +17,6 @@ public class PauseBeforeGame : MonoBehaviour // This class manages the pause bef
     }
     private void OnDisable() => YG2.onGetSDKData -= ShowPauseText;
 
-
-    /// <summary>
-    /// Set pause if player opened save with turned off tutorial menu.
-    /// </summary>
     public void ShowPauseText()
     {
         if (PlayerPrefs.GetInt("Tutorial") == 1 && PlayerPrefs.GetInt("NewGame") == 1)
@@ -36,9 +32,6 @@ public class PauseBeforeGame : MonoBehaviour // This class manages the pause bef
         }
     }
 
-    /// <summary>
-    /// Unpauses game.
-    /// </summary>
     public void ContinueGame()
     {
         _pauseBeforeGame.SetActive(false);

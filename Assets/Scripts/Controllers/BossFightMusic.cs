@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BossFightMusic : MonoBehaviour // This class manages the music during the boss fight.
+public class BossFightMusic : MonoBehaviour 
 {
     [SerializeField] private AudioSource _audioSource;
 
@@ -13,9 +13,6 @@ public class BossFightMusic : MonoBehaviour // This class manages the music duri
     [HideInInspector]
     public bool IsBossFighting { get; private set; }
 
-    /// <summary>
-    /// Begins the boss fight by playing the boss music and updating the boss fight state.
-    /// </summary>
     public void StartBossFight()
     {
         if (_audioSource.isPlaying)
@@ -29,9 +26,6 @@ public class BossFightMusic : MonoBehaviour // This class manages the music duri
         IsBossFighting = true;
     }
 
-    /// <summary>
-    /// Ends the boss fight, restores gameplay music, and updates the boss fight state.
-    /// </summary>
     public void EndBossFight()
     {
         if (_audioSource.isPlaying)

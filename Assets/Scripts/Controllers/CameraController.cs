@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraController : MonoBehaviour // This class manages the camera.
+public class CameraController : MonoBehaviour 
 {
     [SerializeField] private Vector3 _cameraSet;
 
@@ -18,9 +18,6 @@ public class CameraController : MonoBehaviour // This class manages the camera.
         CameraToPlayer();
     }
 
-    /// <summary>
-    /// Make camera follow to player.
-    /// </summary>
     public void CameraToPlayer()
     {
         if (_cameraAim)

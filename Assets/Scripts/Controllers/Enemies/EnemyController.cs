@@ -91,7 +91,6 @@ public class EnemyController : MonoBehaviour // This class manages the enemy's b
     }
     protected virtual void Update()
     {
-        //Debug.DrawRay((Vector2)transform.position + Vector2.up * 0.1f, Vector2.down * 0.1f, Color.red);
         _isGround = Physics2D.OverlapCircle((Vector2)transform.position, _groundCheckRadius, _groundLayer);
 
         enemyAttackTimer += Time.deltaTime;
@@ -103,9 +102,6 @@ public class EnemyController : MonoBehaviour // This class manages the enemy's b
         EnemyMove();
     }
 
-    /// <summary>
-    /// Handles enemy movement.
-    /// </summary>
     private void EnemyMove()
     {
         if (player != null)
@@ -186,9 +182,6 @@ public class EnemyController : MonoBehaviour // This class manages the enemy's b
         
     }
 
-    /// <summary>
-    /// Plays the enemy walking sound if the audio source is enabled. Used in animation event.
-    /// </summary>
     private void EnemyWalkingSounds()
     {
         if (enemyAudioSource.enabled == true)
@@ -197,9 +190,6 @@ public class EnemyController : MonoBehaviour // This class manages the enemy's b
         }
     }
 
-    /// <summary>
-    /// Performs an enemy attack if the attack timer has elapsed, the player is not alive, and the enemy is on the ground.
-    /// </summary>
     private void EnemyAttack()
     {
         if (enemyAttackTimer >= enemyTimeBetweenAttack && player.Health.IsAlive && _isGround)
@@ -217,34 +207,24 @@ public class EnemyController : MonoBehaviour // This class manages the enemy's b
         }
     }
 
-    /// <summary>
-    /// Plays this audio effect. Used in animation event.
-    /// </summary>
     private void EnemySwordAttackCrySound()
     {
         enemyAudioSource.PlayOneShot(_enemySwordAttackCrySound);
     }
 
-    /// <summary>
-    /// Plays this audio effect. Used in animation event.
-    /// </summary>
+
     private void EnemyMagicFistAttackCrySound()
     {
         enemyAudioSource.PlayOneShot(_enemyMagicFistAttackCrySound);
     }
 
-    /// <summary>
-    /// Plays this audio effect. Used in animation event.
-    /// </summary>
+
     private void EnemyDeathSound()
     {
         enemyAudioSource.PlayOneShot(_enemyDeathSound);
     }
 
-    /// <summary>
-    /// Processes the enemy attack by detecting players within range and applying damage. Usedin animation event.
-    /// </summary>
-    /// <remarks>Uses Physics2D.OverlapCircleAll to find players in the attack area and resets the attacktimer after processing.</remarks>
+
     private void EnemyAttackProcess()
     {
         Collider2D[] hitedPlayers = Physics2D.OverlapCircleAll(_enemyAttackPoint.position, _enemyAttackRange, _playerMasks);
@@ -259,9 +239,6 @@ public class EnemyController : MonoBehaviour // This class manages the enemy's b
         enemyAttackTimer = 0;
     }
 
-    /// <summary>
-    /// Spawns a magic fist projectile at the enemy's spawn point, oriented toward the player.
-    /// </summary>
     protected virtual void EnemyMagicFistSpawnProcess()
     {
         if (!player) return;
@@ -283,10 +260,7 @@ public class EnemyController : MonoBehaviour // This class manages the enemy's b
         Gizmos.DrawWireSphere(_enemyAttackPoint.position, _enemyAttackRange);
     }
     
-    /// <summary>
-    /// Applies damage to the enemy, triggers animations, handles death logic, rewards the player, and saves game state if the enemy is killed.
-    /// </summary>
-    /// <param name="damage">The amount of damage to apply to the enemy.</param>
+
     public void EnemyGetDamage(int damage)
     {
        _enemyHealthLogic.TakeDamage(damage);
@@ -313,53 +287,37 @@ public class EnemyController : MonoBehaviour // This class manages the enemy's b
         }
     }
 
-    /// <summary>
-    /// Plays this audio effect. Used in animation event.
-    /// </summary>
+
     private void EnemyGetDamageSound()
     {
         enemyAudioSource.PlayOneShot(_enemyGetDamageSound);
     }
 
-    /// <summary>
-    /// Sets the aggressive state of the object.
-    /// </summary>
-    /// <param name="state">true to set the object as aggressive; otherwise, false.</param>
+
     public void ChangeAgressiveSate(bool state)
     {
         IsAgressive = state;
     }
 
-    /// <summary>
-    /// Disables the enemy and schedules its destruction after a delay.
-    /// </summary>
+
     protected virtual void EnemyDie()
     {
         this.enabled = false;
         Invoke(nameof(EnemyDestroy), 1f);
     }
 
-    /// <summary>
-    /// Destroys the enemy GameObject.
-    /// </summary>
     public void EnemyDestroy()
     {
         Destroy(gameObject);
     }
 
-    /// <summary>
-    /// Sets the enemy attack timer to the specified value.
-    /// </summary>
-    /// <param name="attackTime">The value to assign to the enemy attack timer.</param>
+
     public void LoadAttackTimerData(float attackTime)
     {
         enemyAttackTimer = attackTime;
     }
 
-    /// <summary>
-    /// Sets the timer value for the enemy's Magic Fist ability.
-    /// </summary>
-    /// <param name="magicFistTime">The time value to assign to the Magic Fist timer.</param>
+
     public void LoadMagicFistTimerData(float magicFistTime)
     {
         enemyMagicFistTimer = magicFistTime;

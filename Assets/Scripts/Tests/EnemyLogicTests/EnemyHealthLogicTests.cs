@@ -10,13 +10,10 @@ public class EnemyHealthLogicTests
     [TestCase(-40, -60, 78, true, 0)]
     public void EnemyHealthLogicTests_TakeDamage_ReturnExpectedResult(int initilalHealth, int maxHealth, int amount, bool expectedResult, int expectedAmount)
     {
-        // Arrange
         var health = new EnemyHealthLogic(initilalHealth, maxHealth);
 
-        // Act
         bool result = health.TakeDamage(amount);
 
-        // Assert
         Assert.AreEqual(expectedResult, result);
         Assert.AreEqual(expectedAmount, health.Health);
     }
@@ -29,13 +26,10 @@ public class EnemyHealthLogicTests
     [TestCase(-40, -60, false, 1)]
     public void EnemyHealthLogicTests_LoadHealth_ReturnExpectedResult(int maxHealth, int amount, bool expectedResult, int expectedAmount)
     {
-        // Arrange
         var health = new EnemyHealthLogic(1, maxHealth);
 
-        // Act
         bool result = health.LoadHealth(amount);
 
-        // Assert
         Assert.AreEqual(expectedResult, result);
         Assert.AreEqual(expectedAmount, health.Health);
     }
@@ -44,13 +38,10 @@ public class EnemyHealthLogicTests
     [TestCase(true)]
     public void EnemyHealthLogicTests_WasKilled_ReturnExpectedResult(bool expectedResult)
     {
-        // Arrange
         var health = new EnemyHealthLogic(1, 1);
 
-        // Act
         bool result = health.WasKilled();
 
-        // Assert
         Assert.AreEqual(expectedResult, result);
     }
 }

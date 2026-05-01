@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DeathMenu : MonoBehaviour // This class shows death menu after player is dead.
+public class DeathMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _menusGroup;
 
@@ -12,9 +12,7 @@ public class DeathMenu : MonoBehaviour // This class shows death menu after play
         Time.timeScale = 0;
         PauseLogic.ChangePauseState(true);
     }
-    /// <summary>
-    /// Sends player to the main menu.
-    /// </summary>
+
     public void BackToMenu()
     {
         PauseLogic.ChangePauseState(true);
@@ -25,9 +23,6 @@ public class DeathMenu : MonoBehaviour // This class shows death menu after play
         SceneManager.LoadScene("MainMenu");
     }
 
-    /// <summary>
-    /// Loads the last player's save.
-    /// </summary>
     public void LastSave()
     {
         PauseLogic.ChangePauseState(false);

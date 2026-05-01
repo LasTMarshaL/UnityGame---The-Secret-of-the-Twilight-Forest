@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
 
-public class PauseMenu : MonoBehaviour // This class manages the pause.
+public class PauseMenu : MonoBehaviour 
 {
     [SerializeField] private GameObject _pauseMenu;
 
@@ -36,9 +36,6 @@ public class PauseMenu : MonoBehaviour // This class manages the pause.
         }
     }
 
-    /// <summary>
-    /// Unpauses game.
-    /// </summary
     public void ContinueGame()
     {
         _pauseMenu.SetActive(false);
@@ -47,9 +44,6 @@ public class PauseMenu : MonoBehaviour // This class manages the pause.
         PauseLogic.ChangePauseState(false);
     }
 
-    /// <summary>
-    /// Pauses game and shows adds.
-    /// </summary>
     public void PauseGame()
     {
         _gameSaver.GlobalSave();
@@ -63,10 +57,6 @@ public class PauseMenu : MonoBehaviour // This class manages the pause.
         ShowAdds();
     }
 
-
-    /// <summary>
-    /// Sends player to the main menu.
-    /// </summary>
     public void BackToMenu()
     {
         ShowAdds();
@@ -79,9 +69,6 @@ public class PauseMenu : MonoBehaviour // This class manages the pause.
         SceneManager.LoadScene("MainMenu");
     }
 
-    /// <summary>
-    /// Shows text, that game was saved.
-    /// </summary>
     private IEnumerator ShowSave()
     {
         _showSaveCanvas.SetActive(true);
@@ -91,9 +78,6 @@ public class PauseMenu : MonoBehaviour // This class manages the pause.
         _showSaveCanvas.SetActive(false);
     }
 
-    /// <summary>
-    /// Checks if the coroutine that shows text about saving is active, and if it is, stops it and starts again.
-    /// </summary>
     private void IsShowSafeCorotineActive()
     {
         if (_showSaveCoroutine != null)
@@ -103,9 +87,6 @@ public class PauseMenu : MonoBehaviour // This class manages the pause.
         _showSaveCoroutine = StartCoroutine(ShowSave());
     }
 
-    /// <summary>
-    /// Shows add (Used plugin Youre Games 2).
-    /// </summary>
     public void ShowAdds()
     {
         YG2.InterstitialAdvShow();

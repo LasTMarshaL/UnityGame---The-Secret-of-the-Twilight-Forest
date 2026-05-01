@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BossEnemyController : SecretEnemyController // This class manages the boss enemy.
+public class BossEnemyController : SecretEnemyController 
 {
     [SerializeField] private MagicStoneController[] _magicStones;
 
@@ -16,19 +16,12 @@ public class BossEnemyController : SecretEnemyController // This class manages t
         base.Update();
     }
 
-    /// <summary>
-    /// Displays the dialog and initiates boss fight music.
-    /// </summary>
     protected override void Dialog()
     {
         base.Dialog();
         _bossFightMusic.StartBossFight();
     }
 
-    /// <summary>
-    /// Handles enemy death by ending the boss fight music, updating the state of all magic stones, saving their status,
-    /// and performing a global save.
-    /// </summary>
     protected override void EnemyDie()
     {
         base.EnemyDie();

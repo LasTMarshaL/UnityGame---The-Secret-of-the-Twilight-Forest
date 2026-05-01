@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ChestController : MonoBehaviour // This class manages the chest.
+public class ChestController : MonoBehaviour
 {
     [SerializeField] private int _coinsReward;
 
@@ -57,14 +57,10 @@ public class ChestController : MonoBehaviour // This class manages the chest.
         }
     }
 
-    /// <summary>
-    /// Handles chest usage by updating its state, saving progress, granting rewards, and destroying the chest.
-    /// </summary>
     private void ChestWasUsed()
     {
         _chestLogic.WasOpened();
 
-        // Saves
         _gameSaver.SaveChest(this);
         _gameSaver.GlobalSave();
 
@@ -74,9 +70,6 @@ public class ChestController : MonoBehaviour // This class manages the chest.
     }
 
 
-    /// <summary>
-    /// Removes chest.
-    /// </summary>
     public void ChestDestroy()
     {
         Destroy(gameObject);

@@ -1,4 +1,4 @@
-public class EnemyHealthLogic // This class manages the health of an enemy.
+public class EnemyHealthLogic 
 {
     public int Health { get; private set; }
     public int MaxHealth { get; private set; }
@@ -12,11 +12,6 @@ public class EnemyHealthLogic // This class manages the health of an enemy.
     
     }
 
-    /// <summary>
-    /// Reduces health by the specified damage amount if valid.
-    /// </summary>
-    /// <param name="amount">The amount of damage to apply. Must be non-negative.</param>
-    /// <returns>true if damage was applied; otherwise, false.</returns>
     public bool TakeDamage(int amount)
     {
         if (amount < 0)
@@ -33,11 +28,6 @@ public class EnemyHealthLogic // This class manages the health of an enemy.
         return true;
     }
 
-    /// <summary>
-    /// Sets the current health to the specified amount if it is within valid bounds.
-    /// </summary>
-    /// <param name="amount">The health value to set. Must be between 0 and MaxHealth.</param>
-    /// <returns>true if the health was set successfully; otherwise, false.</returns>
     public bool LoadHealth(int amount)
     {
         if (amount < 0 || amount > MaxHealth)
@@ -48,9 +38,6 @@ public class EnemyHealthLogic // This class manages the health of an enemy.
         return true;
     }
 
-    /// <summary>
-    /// Sets flag, that enemy was killed.
-    /// </summary>
     public bool WasKilled()
     {
         IsKilled = 1;

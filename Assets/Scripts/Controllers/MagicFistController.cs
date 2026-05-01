@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MagicFistController : MonoBehaviour // This class manages the magic fist.
+public class MagicFistController : MonoBehaviour 
 {
     [SerializeField] private int _magicFistDeathTime;
     [SerializeField] private int _magicFistSpeed;
@@ -25,9 +25,6 @@ public class MagicFistController : MonoBehaviour // This class manages the magic
         }
     }
 
-    /// <summary>
-    /// Removes object
-    /// </summary>
     private void Death()
     {
         Destroy(gameObject);

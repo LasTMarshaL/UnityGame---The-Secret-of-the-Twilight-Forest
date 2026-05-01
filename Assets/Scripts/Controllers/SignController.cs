@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using YG;
 
-public class SingController : MonoBehaviour // This class manages the sign interactions.
+public class SingController : MonoBehaviour
 {
     [SerializeField] private float _distanseToShowText;
 
@@ -53,18 +53,11 @@ public class SingController : MonoBehaviour // This class manages the sign inter
         
     }
 
-    /// <summary>
-    /// Runs all game processes again.
-    /// </summary>
     public void ContinueGame()
     {
         Time.timeScale = 1;
     }
 
-
-    /// <summary>
-    /// Shows adds (Used plugin Youre Games 2).
-    /// </summary>
     public void ShowAdds()
     {
         YG2.InterstitialAdvShow();

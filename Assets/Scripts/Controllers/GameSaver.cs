@@ -3,10 +3,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using YG;
-using PlayerPrefs = RedefineYG.PlayerPrefs; // Make PlayerPrefs save game to the web platform cloud.
+using PlayerPrefs = RedefineYG.PlayerPrefs; 
 
 
-public class GameSaver : MonoBehaviour // This class manages saving and loading game data.
+public class GameSaver : MonoBehaviour 
 {
     private PlayerController _player;
 
@@ -50,18 +50,11 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Sets the isConnectedToServer variable to true, allowing the game to save and load data from PlayerPrefs.
-    /// </summary>
     public void IsConnectedToServer()
     {
         isConnectedToServer = true;
     }
 
-    /// <summary>
-    /// Adds key to the list of all player prefs keys if it is not already there, and saves the updated list to PlayerPrefs under the key "AllKeys".
-    /// <param name="key"></param>
-    /// </summary>
     public void AddKey(string key)
     {
         if (isConnectedToServer)
@@ -76,9 +69,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Removes all keys from the list of all player prefs keys and deletes them from PlayerPrefs.
-    /// </summary>
     public void RemoveKey()
     {
         if (isConnectedToServer)
@@ -96,9 +86,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Saves the payer's current game state to PlayerPrefs.
-    /// </summary>
     public void SaveGamePlayer()
     {
         if (isConnectedToServer)
@@ -140,10 +127,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Saves the enemy's current game state to PlayerPrefs.
-    /// </summary>
-    /// <param name="en">The enemy controller whose state is to be saved.</param>
     public void SaveGameEnemy(EnemyController en)
     {
         if (isConnectedToServer)
@@ -155,10 +138,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-
-    /// <summary>
-    /// Saves all enemies' current game state to PlayerPrefs.
-    /// </summary>
     public void SaveGameEnemies()
     {
         if (isConnectedToServer)
@@ -199,10 +178,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Saves the chest's current game state to PlayerPrefs.
-    /// </summary>
-    /// <param name="chest">The chest controller whose state is to be saved.</param>
     public void SaveChest(ChestController chest)
     {
         if (isConnectedToServer)
@@ -214,9 +189,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Saves all chests' current game state to PlayerPrefs.
-    /// </summary>
     public void SaveChests()
     {
         if (isConnectedToServer)
@@ -234,10 +206,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Saves the health gain point's current game state to PlayerPrefs.
-    /// </summary>
-    /// <param name="hgp">The health gain point controller whose state is to be saved.</param>
     public void SaveHealthGainPoint(HealtGainPointController hgp)
     {
         if (isConnectedToServer)
@@ -249,9 +217,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Saves all health gain points' current game state to PlayerPrefs.
-    /// </summary>
     public void SaveHealthGainPoints()
     {
         if (isConnectedToServer)
@@ -269,10 +234,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Saves the magic stone's current game state to PlayerPrefs.
-    /// </summary>
-    /// <param name="magicStone">The magic stone controller whose state is to be saved.</param>
     public void SaveMagicStone(MagicStoneController magicStone)
     {
         if (isConnectedToServer)
@@ -284,9 +245,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Saves all magic stones' current game state to PlayerPrefs.
-    /// </summary>
     public void SaveMagicStones()
     {
         if (isConnectedToServer)
@@ -304,9 +262,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }    
     }
 
-    /// <summary>
-    /// Saves the camera's current position to PlayerPrefs.
-    /// </summary>
     public void SaveCamera()
     {
         if (isConnectedToServer)
@@ -323,9 +278,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Save the player's current levels of health, damage and speed to PlayerPrefs.
-    /// </summary>
     public void SaveLevels()
     {
         if (isConnectedToServer)
@@ -342,9 +294,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Saves the boss fight music's current state (whether the boss fight is happening and the current time of the music) to PlayerPrefs.
-    /// </summary>
     public void SaveMusic()
     {
         if (isConnectedToServer)
@@ -366,9 +315,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Executes all saving methods to save the entire game state to PlayerPrefs.
-    /// </summary>
     public void GlobalSave()
     {
         SaveGamePlayer();
@@ -381,9 +327,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         SaveMusic();
     }
 
-    /// <summary>
-    /// Loads the game state from PlayerPrefs and applies it to the player, enemies, chests, health gain points, magic stones, camera and boss fight music.
-    /// </summary>
     public void LoadGame()
     {
         if (isConnectedToServer)
@@ -544,9 +487,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Starts a new game by removing all saved data from PlayerPrefs, showing an advertisement, setting the "NewGame" key to 1 in PlayerPrefs and loading the first level scene.
-    /// </summary>
     public void NewGame()
     {
         if (isConnectedToServer)
@@ -561,9 +501,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Continues the game by showing an advertisement, setting the "NewGame" key to 0 in PlayerPrefs and loading the first level scene.
-    /// </summary>
     public void ContinueGame()
     {
         if (isConnectedToServer)
@@ -576,9 +513,6 @@ public class GameSaver : MonoBehaviour // This class manages saving and loading 
         }
     }
 
-    /// <summary>
-    /// Shows add (Used plugin Youre Games 2).
-    /// </summary>
     public void ShowAdds()
     {
         YG2.InterstitialAdvShow();

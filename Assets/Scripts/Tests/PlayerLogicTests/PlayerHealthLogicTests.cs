@@ -10,13 +10,10 @@ public class PlayerHealthLogicTests
     [TestCase(-40, -60, 78, true, 79)]
     public void PlyerHealthLogicTests_GetHealth_ReturnExpectedResult(int initilalHealth, int maxHealth, int amount, bool expectedResult, int expectedAmount)
     {
-        // Arrange
         var health = new PlayerHealthLogic(initilalHealth, maxHealth);
 
-        // Act
         bool result = health.GetHealth(amount);
 
-        // Assert
         Assert.AreEqual(expectedResult, result);
         Assert.AreEqual(expectedAmount, health.Health);
     }
@@ -30,13 +27,10 @@ public class PlayerHealthLogicTests
     [TestCase(-40, -60, 78, true, 0)]
     public void PLayerHealthLogicTests_TakeDamage_ReturnExpectedResult(int initialHealth, int maxHealth, int amount, bool expectedResult, int expectedAmount)
     {
-        // Arrange
         var health = new PlayerHealthLogic(initialHealth, maxHealth);
 
-        // Act
         bool result = health.TakeDamage(amount);
 
-        // Assert
         Assert.AreEqual(expectedResult, result);
         Assert.AreEqual(expectedAmount, health.Health);
     }
@@ -47,13 +41,10 @@ public class PlayerHealthLogicTests
     [TestCase(100, (int)70.5f, true, 70)]
     public void PlayerHealthLogicTests_LoadHealth_ReturnExpectedResult(int maxHealth, int amount, bool expectedResult, int expectedAmount)
     {
-        // Arrange
         var health = new PlayerHealthLogic(1, maxHealth);
 
-        // Act
         bool result = health.LoadHealth(amount);
 
-        // Assert
         Assert.AreEqual(expectedResult, result);
         Assert.AreEqual(expectedAmount, health.Health);
     }
@@ -63,13 +54,10 @@ public class PlayerHealthLogicTests
     [TestCase(90, true, 90)]
     public void PlayerHealthLogicTests_LoadMaxHealth_ReturnExpectedResult(int amount, bool expectedResult, int expectedAmount)
     {
-        // Arrange
         var health = new PlayerHealthLogic(1, 100);
 
-        // Act
         bool result = health.LoadMaxHealth(amount);
 
-        // Assert
         Assert.AreEqual(expectedResult, result);
         Assert.AreEqual(expectedAmount, health.MaxHealth);
     }

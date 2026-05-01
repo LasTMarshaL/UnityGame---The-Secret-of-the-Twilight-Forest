@@ -1,12 +1,9 @@
 using UnityEngine;
 
-public class EnemyGuardController : EnemyController // This class manages the guard enemy.
+public class EnemyGuardController : EnemyController
 {
     [SerializeField] private MagicStoneController[] _magicStones;
 
-    /// <summary>
-    /// Handles enemy death by updating magic stone states and saving progress.
-    /// </summary>
     protected override void EnemyDie()
     {
         base.EnemyDie();

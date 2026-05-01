@@ -1,8 +1,7 @@
-using System.Xml.Linq;
 using UnityEngine;
 using YG;
-using PlayerPrefs = RedefineYG.PlayerPrefs; // Make PlayerPrefs save game to the web platform cloud.
-public class Tutorial : MonoBehaviour // This class manages the tutorial menu and its interactions with the player.
+using PlayerPrefs = RedefineYG.PlayerPrefs;
+public class Tutorial : MonoBehaviour
 {
     [SerializeField] private GameObject _tutorial;
     [SerializeField] private GameObject _mobileTutorial;
@@ -25,9 +24,6 @@ public class Tutorial : MonoBehaviour // This class manages the tutorial menu an
         _player = PlayerController.playerInstance;
     }
 
-    /// <summary>
-    /// Shows tutorial menu.
-    /// </summary>
     public void ShowTutorial()
     {
         if (PlayerPrefs.GetInt("Tutorial") == 0 || PlayerPrefs.GetInt("NewGame") == 0 || !PlayerPrefs.HasKey("NewGame"))
@@ -53,9 +49,6 @@ public class Tutorial : MonoBehaviour // This class manages the tutorial menu an
         }
     }
 
-    /// <summary>
-    /// Unpauses game.
-    /// </summary>
     public void ContinueGame()
     {
         Time.timeScale = 1;

@@ -6,18 +6,15 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using YG;
 
-public class PlayerController : MonoBehaviour // This class manages the player's behavior.
+public class PlayerController : MonoBehaviour
 {
-    // Initial levels and values for the player's stats, which can be set in the Unity Inspector.
-    [Header("Initial stats")] // Initial stats for the player, which can be set in the Unity Inspector.
+    [Header("Initial stats")] 
     [SerializeField] private int _initialHealthLevel;
     [SerializeField] private int _initialDamageLevel;
     [SerializeField] private int _initialSpeedLevel;
 
     [SerializeField] private int _initialCoins;
 
-
-    // Logic classes to manage the player's stats, wallet, and health.
     private PlayerStatsLogic _playerStatsLogic;
     private PlayerWalletLogic _playerWalletLogic;
     private PlayerHealthLogic _playerHealthLogic;
@@ -30,7 +27,7 @@ public class PlayerController : MonoBehaviour // This class manages the player's
     public PlayerHealthLogic Health => _playerHealthLogic;
 
 
-    [Header("Phisical Components")] // Unity phisical components used by the player, which can be set in the Unity Inspector.
+    [Header("Phisical Components")]
     [SerializeField] public Rigidbody2D Rigidbody2D { get; private set; }
     [SerializeField] private float _jumpForce;
 
@@ -218,10 +215,6 @@ public class PlayerController : MonoBehaviour // This class manages the player's
         PlayerClimb();
     }
 
-
-    /// <summary>
-    /// Updates the coins counter text. Called in the Update method after finishing dialog to avoid bugs.
-    /// </summary>
     public void RefreshCoinsCounterText()
     {
         string prefix;
@@ -242,9 +235,6 @@ public class PlayerController : MonoBehaviour // This class manages the player's
         _сoinsCounter.text = prefix + _playerWalletLogic.Coins.ToString();
     }
 
-    /// <summary>
-    /// Handles player movement and animation updates based on input from keyboard or joystick.
-    /// </summary>
     private void PlayerMove()
     {
         if (!IsMobile)
@@ -294,9 +284,6 @@ public class PlayerController : MonoBehaviour // This class manages the player's
         }
     }
 
-    /// <summary>
-    /// Initiates the player's jump action if grounded and not performing other restricted actions.
-    /// </summary>
     private void PlayerJump()
     {
         if (_isGround && !_animator.GetBool("IsAttacking") && !_animator.GetBool("IsBlocking") && !_isLadder)
@@ -327,9 +314,6 @@ public class PlayerController : MonoBehaviour // This class manages the player's
         }
     }
 
-    /// <summary>
-    /// Handles the jump button press when the character is on the ground.
-    /// </summary>
     public void OnJumpButtonDown()
     {
         if (_isGround)
@@ -338,9 +322,7 @@ public class PlayerController : MonoBehaviour // This class manages the player's
         }
     }
 
-    /// <summary>
-    /// Handles player climbing movement on ladders, updating vertical velocity based on input and player speed.
-    /// </summary>
+
     private void PlayerClimb()
     {
         if (_isLadder)
@@ -357,18 +339,11 @@ public class PlayerController : MonoBehaviour // This class manages the player's
         }
     }
 
-    /// <summary>
-    /// Plays ones the player's step sound effect. Called by animation event.
-    /// </summary>
     private void PlayerStepSounds()
     {
         _audioSource.PlayOneShot(_stepSound);
     }
 
-    /// <summary>
-    /// Performs a player attack, triggering an attack animation and applying damage to nearby enemies if all conditions are met.
-    /// are met.
-    /// </summary>
     private void PlayerAttack()
     {
         if (!IsMobile)
@@ -412,9 +387,6 @@ public class PlayerController : MonoBehaviour // This class manages the player's
         }
     }
 
-    /// <summary>
-    /// Handles the attack button press, enabling attack if the cooldown period has elapsed.
-    /// </summary>
     public void OnAttackButtonDown()
     {
         if (AttackTimer >= _timeBetweenAttack)
@@ -423,9 +395,6 @@ public class PlayerController : MonoBehaviour // This class manages the player's
         }
     }
 
-    /// <summary>
-    /// Plays ones the sword attack sound effect for the player.
-    /// </summary>
     public void PlayerSwordAttackSound()
     {
         _audioSource.PlayOneShot(_swordAttackSound);
@@ -440,9 +409,6 @@ public class PlayerController : MonoBehaviour // This class manages the player's
         Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
     }
 
-    /// <summary>
-    /// Updates the player's health indicator and health text display based on the current health value.
-    /// </summary>
     protected void IndicatorPlayerHealth()
     {
         if (_playerHealthLogic.Health <= 0)
@@ -461,9 +427,6 @@ public class PlayerController : MonoBehaviour // This class manages the player's
         }
     }
 
-    /// <summary>
-    /// Handles the player receiving damage, including applying knockback, playing sounds and animations, and checking for player death. Called by enemy attacks.
-    /// </summary>
     public void PlayerGetDamage(int damage, Vector3 enemyPosition, Transform enemyTransform)
     {
         Vector2 knockbackDirection = (transform.position - enemyPosition).normalized;
@@ -490,17 +453,11 @@ public class PlayerController : MonoBehaviour // This class manages the player's
         }
     }
 
-    /// <summary>
-    /// Plays ones the sound when the player receiving damage. Called by animation event.
-    /// </summary>
     private void PlayerGetDamageSound()
     {
         _audioSource.PlayOneShot(_getDamageSound);
     }
 
-    /// <summary>
-    /// Pushes the player back in the opposite direction of the attack when receiving damage.
-    /// </summary>
     private IEnumerator PlayerKnockBack(Vector2 direction)
     {
         float startTime = Time.time;
@@ -513,18 +470,11 @@ public class PlayerController : MonoBehaviour // This class manages the player's
 
     }
 
-
-    /// <summary>
-    /// Displays the death menu when the player dies.
-    /// </summary>
     private void PlayerDie()
     {
         _deathMenu.SetActive(true);
     }
 
-    /// <summary>
-    /// Checks player's device type and handles the block button press when the required time interval has elapsedand other conditions are met. It also plays the block sound and animation.
-    /// </summary>
     private void PlayerBlockStart()
     {
         if (!IsMobile)
@@ -555,9 +505,6 @@ public class PlayerController : MonoBehaviour // This class manages the player's
         }
     }
 
-    /// <summary>
-    /// Handles the block button press when the required time interval has elapsed.
-    /// </summary>
     public void OnBlockButtonDown()
     {
         if (BlockTimer >= _timeBetweenBlock)
@@ -566,64 +513,38 @@ public class PlayerController : MonoBehaviour // This class manages the player's
         }
     }
 
-    /// <summary>
-    /// End player's block state. Called by animation event.
-    /// </summary>
     private void PlayerBlockFinish()
     {
         isBlocking = false;
     }
 
-    /// <summary>
-    /// Displays the save canvas for a specified duration.
-    /// </summary>
     private IEnumerator ShowSave()
     {
         _showSaveCanvas.SetActive(true);
-        yield return new WaitForSeconds(_showSaveTime); // Wait for the specified duration before hiding the save canvas.
+        yield return new WaitForSeconds(_showSaveTime); 
         _showSaveCanvas.SetActive(false);
     }
 
-    /// <summary>
-    /// Sets the state of the E button.
-    /// </summary>
-    /// <param name="flag">True if the E button is pressed; otherwise, false.</param>
     public void OnEButtonSates(bool flag)
     {
         IsEButtonPressed = flag;
     }
 
-    /// <summary>
-    /// Sets the attack timer value.
-    /// </summary>
-    /// <param name="attackTime">The value to assign to the attack timer.</param>
     public void LoadAttackTimerData(float attackTime)
     {
         AttackTimer = attackTime;
     }
 
-    /// <summary>
-    /// Sets the block timer value.
-    /// </summary>
-    /// <param name="blockTime">The value to assign to the block timer.</param>
     public void LoadBlockTimerData(float blockTime)
     {
         BlockTimer = blockTime;
     }
 
-    /// <summary>
-    /// Sets the adds coins timer value.
-    /// </summary>
-    /// <param name="addsCoinsTime">The value to assign to the adds coins timer.</param>
     public void LoadAddsCoinsTimer(float addsCoinsTime)
     {
         AddsCoinsTimer = addsCoinsTime;
     }
 
-    /// <summary>
-    /// Sets the adds health timer value.
-    /// </summary>
-    /// <param name="addsHealthTime">The value to assign to the adds health timer.</param>
     public void LoadHealthCoinsTimer(float addsHealthTime)
     {
         AddsHealthTimer = addsHealthTime;

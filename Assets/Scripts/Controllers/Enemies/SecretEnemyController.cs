@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using YG;
 
-public class SecretEnemyController : EnemyController // This class manages the secret enemy.
+public class SecretEnemyController : EnemyController
 {
     [SerializeField] private GameObject _dialogCanvas;
     [SerializeField] private GameObject _indicatorsCanvas;
@@ -44,10 +44,6 @@ public class SecretEnemyController : EnemyController // This class manages the s
         base.Update();
     }
 
-    /// <summary>
-    /// Handles the dialog sequence with the enemy, updating UI elements, managing game pause state, and displaying
-    /// dialog phrases based on the current language and input method.
-    /// </summary>
     protected virtual void Dialog()
     {
         PauseLogic.ChangePauseState(true);

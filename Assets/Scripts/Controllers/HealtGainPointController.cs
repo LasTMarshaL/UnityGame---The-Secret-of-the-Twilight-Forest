@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HealtGainPointController : MonoBehaviour // This class manages the health gain point.
+public class HealtGainPointController : MonoBehaviour
 {
 
     [SerializeField] private int _healthReward;
@@ -58,14 +58,10 @@ public class HealtGainPointController : MonoBehaviour // This class manages the 
         }
     }
 
-    /// <summary>
-    /// Marks the health gain point as used, saves its state, performs a global save, and applies health gain.
-    /// </summary>
     private void HealthGainPointWasUsed()
     {
         _healthGainPointLogic.WasUsed();
 
-        // saves
         _gameSaver.SaveHealthGainPoint(this);
         _gameSaver.GlobalSave();
 
@@ -75,9 +71,6 @@ public class HealtGainPointController : MonoBehaviour // This class manages the 
     }
 
 
-    /// <summary>
-    /// Removes chest
-    /// </summary>
     public void HealthGainPointDestroy()
     {
         Destroy(gameObject);

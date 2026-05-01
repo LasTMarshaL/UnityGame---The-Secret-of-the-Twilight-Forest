@@ -8,13 +8,10 @@ public class PlayerWalletLogicTests
     [TestCase(-50, 0, true, 0)]
     public void PlayerWalletLogicTests_GetCoins_ReturnExpetedResult(int initialCoins, int amount, bool expectedResult, int expectedAmount)
     {
-        // Arrange
         var wallet = new PlayerWalletLogic(initialCoins);
 
-        // Act
         bool result = wallet.GetCoins(amount);
 
-        // Assert
         Assert.AreEqual(expectedResult, result);
         Assert.AreEqual(expectedAmount, wallet.Coins);
     }
@@ -25,13 +22,10 @@ public class PlayerWalletLogicTests
     [TestCase(-9, 20, false, 0)]
     public void PlayerWalletLogicTests_SpendCoins_ReturnExpectedResult(int initialCoins, int amount, bool expectedResult, int expectedAmount)
     {
-        // Arrange
         var wallet = new PlayerWalletLogic(initialCoins);
 
-        // Act
         bool result = wallet.SendCoins(amount);
 
-        // Assert
         Assert.AreEqual(expectedResult, result);
         Assert.AreEqual(expectedAmount, wallet.Coins);
     }
@@ -42,13 +36,10 @@ public class PlayerWalletLogicTests
     [TestCase(-9, 20, true, 20)]
     public void PlayerWalletLogicTests_LoadCoins_ReturnExpectedResult(int initialCoins, int amount, bool expectedResult, int expectedAmount)
     {
-        // Arrange
         var wallet = new PlayerWalletLogic(initialCoins);
 
-        // Act
         bool result = wallet.LoadCoins(amount);
 
-        // Assert
         Assert.AreEqual(expectedResult, result);
         Assert.AreEqual(expectedAmount, wallet.Coins);
     }

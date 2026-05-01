@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using YG;
 
-public class ShopMenu : MonoBehaviour // This class manages the shop menu.
+public class ShopMenu : MonoBehaviour
 {
     private PlayerController _player;
 
@@ -35,7 +35,7 @@ public class ShopMenu : MonoBehaviour // This class manages the shop menu.
     }
     private void Update()
     {
-        if (YG2.lang == "ru") // Define language from web platform using YG2
+        if (YG2.lang == "ru")
         {
             if (_player.Stats.CanUpgradeLevel(_player.Stats.HealthLevel))
             {
@@ -88,7 +88,7 @@ public class ShopMenu : MonoBehaviour // This class manages the shop menu.
                 _textOnCoinsButton.text = ((float)Math.Round(_player.AddsCoinsTimer, 1)).ToString() + " / 30";
             }
         }
-        else if (YG2.lang == "en") // Define language from web platform using YG2 
+        else if (YG2.lang == "en") 
         {
             if (_player.Stats.CanUpgradeLevel(_player.Stats.HealthLevel))
             {
@@ -143,10 +143,6 @@ public class ShopMenu : MonoBehaviour // This class manages the shop menu.
         }
     }
 
-
-    /// <summary>
-    /// Attempts to upgrade the player's health level by spending coins and increasing the upgrade cost.
-    /// </summary>
     public void HealthImprove()
     {
         if (_player.Wallet.SendCoins((int)_healthPrise))
@@ -162,9 +158,6 @@ public class ShopMenu : MonoBehaviour // This class manages the shop menu.
         }
     }
 
-    /// <summary>
-    /// Attempts to upgrade the player's damage level by spending coins and increasing the upgrade cost.
-    /// </summary>
     public void DamageImprove()
     {
         if (_player.Wallet.SendCoins((int)_damagePrise))
@@ -177,9 +170,6 @@ public class ShopMenu : MonoBehaviour // This class manages the shop menu.
         }
     }
 
-    /// <summary>
-    /// Attempts to upgrade the player's speed level by spending coins and increasing the upgrade cost.
-    /// </summary>
     public void SpeedImprove()
     {
         if (_player.Wallet.SendCoins((int)_speedPrise))
@@ -192,9 +182,6 @@ public class ShopMenu : MonoBehaviour // This class manages the shop menu.
         }
     }
 
-    /// <summary>
-    /// Provides health points tp player for coins.
-    /// </summary>
     public void HealthForCoins()
     {
         if (_player.Wallet.SendCoins(regainHealthPrise))
@@ -205,9 +192,6 @@ public class ShopMenu : MonoBehaviour // This class manages the shop menu.
         }
     }
 
-    /// <summary>
-    /// Provides coins to player for adds watching (plugin YG2 is used).
-    /// </summary>
     public void CoinsForAdds()
     {
         if (_player.AddsCoinsTimer >= 30)
@@ -223,9 +207,6 @@ public class ShopMenu : MonoBehaviour // This class manages the shop menu.
         }
     }
 
-    /// <summary>
-    /// Provides health points to player for adds watching (plugin YG2 is used).
-    /// </summary>
     public void HealthForAdds()
     {
         if (_player.AddsHealthTimer >= 30)
