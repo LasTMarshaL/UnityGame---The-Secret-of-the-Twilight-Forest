@@ -16,7 +16,7 @@ Update 1: Software part is developed, tested and can be seen in this repository.
 * **Game design and development** - all such operations are executed in Unity Engine.
 
 ## ⚠️ Safety Notice
-*⚠️!The author bears no responsibility for the reader's actions!⚠️
+* ⚠️!The author bears no responsibility for the reader's actions!⚠️
 
 ## 🚀 Planned (possible) updates
 * Code optimization and improvements.
